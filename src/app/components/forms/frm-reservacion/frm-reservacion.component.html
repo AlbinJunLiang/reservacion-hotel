@@ -1,0 +1,144 @@
+<h2 mat-dialog-title>{{ titulo }}</h2>
+<mat-dialog-content>
+  <form id="miFormulario" [formGroup]="myForm" (ngSubmit)="onGuardar()">
+    <div style="display: flex; justify-content: space-between">
+      <mat-form-field style="width: 49%">
+        <mat-label>id cliente</mat-label>
+        <input matInput formControlName="idCliente" />
+      </mat-form-field>
+
+      <mat-form-field style="width: 48%">
+        <mat-label>id recepcionista</mat-label>
+        <input matInput formControlName="idRecepcionista" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      @if(F['idCliente'].invalid && F['idCliente'].touched){
+      @if(F['idCliente'].errors!['required']){
+      <small class="alert alert-danger">El id es obligatorio</small>
+      } @if(F['idCliente'].errors!['idCliente']){
+      <small class="alert alert-danger"
+        >El idCliente debe tener como maximo 15 caracteres</small
+      >
+      } @if(F['idCliente'].errors!['minlength']){
+      <small class="alert alert-danger"
+        >El idCliente debe tener como minimo 8 caracteres</small
+      >
+      } } @if(F['idRecepcionista'].invalid && F['idRecepcionista'].touched){
+      @if(F['idRecepcionista'].errors!['required']){
+      <small class="alert alert-danger">El id es obligatorio</small>
+      } @if(F['idRecepcionista'].errors!['idCliente']){
+      <small class="alert alert-danger"
+        >El idRecepcionista debe tener como maximo 15 caracteres</small
+      >
+      } @if(F['idRecepcionista'].errors!['minlength']){
+      <small class="alert alert-danger"
+        >El idRecepcionista debe tener como minimo 8 caracteres</small
+      >
+      } } @if(F['idHabitacion'].invalid && F['idRecepcionista'].touched){
+      @if(F['idHabitacion'].errors!['required']){
+      <small class="alert alert-danger"
+        >Debe ingresar el numero de la habitacion</small
+      >
+      } } @if(F['fechaFinalizacion'].invalid && F['fechaFinalizacion'].touched){
+      @if(F['fechaFinalizacion'].errors!['required']){
+      <small class="alert alert-danger"
+        >La fecha de finalizacion es obligatoria</small
+      >
+      }
+      <div *ngIf="F['fechaFinalizacion'].errors">
+        <small class="alert alert-danger"
+          >formato de fecha no valido, ejemplo correcto: 2024-07-09 06:20:41</small
+        >
+      </div>
+
+      } @if(F['fechaEntrada'].invalid && F['fechaEntrada'].touched){
+      @if(F['fechaEntrada'].errors!['required']){
+      <small class="alert alert-danger"
+        >La fecha de entrada es obligatoria</small
+      >
+      }
+      <div *ngIf="F['fechaEntrada'].errors">
+        <small class="alert alert-danger"
+        >formato de fecha no valido, ejemplo correcto: 2024-07-09 06:20:41</small
+        >
+      </div>
+
+      } @if(F['cantidadNoches'].invalid && F['cantidadNoches'].touched){
+      @if(F['cantidadNoches'].errors!['required']){
+      <small class="alert alert-danger"
+        >La cantidad de noches es obligatoria</small
+      >
+      } @if(F['cantidadNoches'].errors!['pattern']){
+      <small class="alert alert-danger"
+        >Solo puede ingresar datos numericos</small
+      >
+      } } @if(F['montoFinal'].invalid && F['montoFinal'].touched){
+      @if(F['montoFinal'].errors!['required']){
+      <small class="alert alert-danger">El monto es obligatorio</small>
+      } @if(F['montoFinal'].errors!['pattern']){
+      <small class="alert alert-danger"
+        >Solo puede ingresar datos numericos</small
+      >
+      } } @if(F['estado'].invalid && F['estado'].touched){
+      @if(F['estado'].errors!['required']){
+      <small class="alert alert-danger">Es necesario ingresar el estado</small>
+      } @if(F['estado'].errors!['pattern']){
+      <small class="alert alert-danger"
+        >Indique si esta expirado o activo</small
+      >
+      } }
+    </div>
+
+    <div style="display: flex; justify-content: space-between">
+      <mat-form-field style="width: 23%">
+        <mat-label>habitacion</mat-label>
+        <input matInput formControlName="idHabitacion" />
+      </mat-form-field>
+      <mat-form-field style="width: 35%">
+        <mat-label>check-in (dd-mm-yy 00:00:00)</mat-label>
+        <input matInput formControlName="fechaEntrada" />
+      </mat-form-field>
+
+      <mat-form-field style="width: 35%">
+        <mat-label>check-out (dd-mm-yy 00:00:00)</mat-label>
+        <input matInput formControlName="fechaFinalizacion" />
+      </mat-form-field>
+    </div>
+
+    <div style="display: flex; justify-content: space-between">
+      <mat-form-field style="width: 31%">
+        <mat-label>noches</mat-label>
+        <input matInput formControlName="cantidadNoches" />
+      </mat-form-field>
+
+      <mat-form-field style="width: 31%">
+        <mat-label>monto</mat-label>
+        <input matInput formControlName="montoFinal" />
+      </mat-form-field>
+
+      <mat-form-field style="width: 31%">
+        <mat-label>Estado</mat-label>
+        <mat-select formControlName="estado">
+          <mat-option value="ACTIVO">Activo</mat-option>
+          <mat-option value="EXPIRADO">Expirado</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <input type="hidden" formControlName="id" />
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions style="align-self: flex-end">
+  <button
+    mat-button
+    type="submit"
+    form="miFormulario"
+    [disabled]="!myForm.valid"
+  >
+    Guardar
+  </button>
+
+  <button mat-button [mat-dialog-close]="false">Cerrar</button>
+</mat-dialog-actions>

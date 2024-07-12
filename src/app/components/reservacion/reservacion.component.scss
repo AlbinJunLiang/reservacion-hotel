@@ -1,0 +1,21 @@
+mat-card-header{
+    height: 44px;
+    display: flex;
+    justify-content: center;
+}
+
+mat-card-actions {
+    justify-content: flex-end;
+    height: 64px;
+    >button {
+        margin-right: 15px;
+    }
+}
+
+tr[mat-row]:hover {
+    background: whitesmoke;
+    color: #000;
+}
+mat-form-field{
+    margin-right: 5px;
+}

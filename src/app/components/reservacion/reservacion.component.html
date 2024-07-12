@@ -1,0 +1,278 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Gestion Reservaciones</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-expansion-panel
+      (opened)="panelOpenState.set(true)"
+      (closed)="panelOpenState.set(false); limpiar()"
+    >
+      @if(rol !== 4){
+      <mat-expansion-panel-header>
+        <mat-panel-title
+          >Filtrar - Click para
+          {{ panelOpenState() ? "Cerrar" : "Abrir" }}</mat-panel-title
+        >
+      </mat-expansion-panel-header>
+      }
+
+      <mat-form-field>
+        <mat-label>Id</mat-label>
+        <input
+          matInput
+          #fid
+          id="fid"
+          (keyup)="
+            onFiltroChange({
+              id: fid.value,
+              idRecepcionista: fidRecepcionista.value,
+              idCliente: fidCliente.value,
+              idHabitacion: fidHabitacion.value,
+              fechaEntrada: ffechaEntrada.value,
+              fechaFinalizacion: ffechaSalida.value,
+              estado: festado.value
+            })
+          "
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Id Recepcionista</mat-label>
+        <input
+          matInput
+          #fidRecepcionista
+          id="fidRecepcionista"
+          (keyup)="
+            onFiltroChange({
+              id: fid.value,
+              idRecepcionista: fidRecepcionista.value,
+              idCliente: fidCliente.value,
+              idHabitacion: fidHabitacion.value,
+              fechaEntrada: ffechaEntrada.value,
+              fechaFinalizacion: ffechaSalida.value,
+              estado: festado.value
+            })
+          "
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Id Cliente</mat-label>
+        <input
+          matInput
+          #fidCliente
+          id="fidCliente"
+          (keyup)="
+            onFiltroChange({
+              id: fid.value,
+              idRecepcionista: fidRecepcionista.value,
+              idCliente: fidCliente.value,
+              idHabitacion: fidHabitacion.value,
+              fechaEntrada: ffechaEntrada.value,
+              fechaFinalizacion: ffechaSalida.value,
+              estado: festado.value
+            })
+          "
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Habitacion</mat-label>
+        <input
+          matInput
+          #fidHabitacion
+          id="fidHabitacion"
+          (keyup)="
+            onFiltroChange({
+              id: fid.value,
+              idRecepcionista: fidRecepcionista.value,
+              idCliente: fidCliente.value,
+              idHabitacion: fidHabitacion.value,
+              fechaEntrada: ffechaEntrada.value,
+              fechaFinalizacion: ffechaSalida.value,
+              estado: festado.value
+            })
+          "
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>fecha entrada</mat-label>
+        <input
+          matInput
+          #ffechaEntrada
+          id="ffechaEntrada"
+          (keyup)="
+            onFiltroChange({
+              id: fid.value,
+              idRecepcionista: fidRecepcionista.value,
+              idCliente: fidCliente.value,
+              idHabitacion: fidHabitacion.value,
+              fechaEntrada: ffechaEntrada.value,
+              fechaFinalizacion: ffechaSalida.value,
+              estado: festado.value
+            })
+          "
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>fecha salida</mat-label>
+        <input
+          matInput
+          #ffechaSalida
+          id="ffechaSalida"
+          (keyup)="
+            onFiltroChange({
+              id: fid.value,
+              idRecepcionista: fidRecepcionista.value,
+              idCliente: fidCliente.value,
+              idHabitacion: fidHabitacion.value,
+              fechaEntrada: ffechaEntrada.value,
+              fechaFinalizacion: ffechaSalida.value,
+              estado: festado.value
+            })
+          "
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Estado</mat-label>
+        <input
+          matInput
+          #festado
+          id="festado"
+          (keyup)="
+            onFiltroChange({
+              id: fid.value,
+              idRecepcionista: fidRecepcionista.value,
+              idCliente: fidCliente.value,
+              idHabitacion: fidHabitacion.value,
+              fechaEntrada: ffechaEntrada.value,
+              fechaFinalizacion: ffechaSalida.value,
+              estado: festado.value
+            })
+          "
+        />
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+        <!-- Position Column -->
+        <ng-container matColumnDef="idReservacion">
+          <th mat-header-cell *matHeaderCellDef>Id</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+
+        <ng-container matColumnDef="idCliente">
+          <th mat-header-cell *matHeaderCellDef>ID cliente</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.idCliente }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="idRecepcionista">
+          <th mat-header-cell *matHeaderCellDef>ID recepcionista</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.idRecepcionista }}
+          </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="idHabitacion">
+          <th mat-header-cell *matHeaderCellDef>Habitacion</th>
+          <td mat-cell *matCellDef="let element">{{ element.idHabitacion }}</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="fechaEntrada">
+          <th mat-header-cell *matHeaderCellDef>Check-in</th>
+          <td mat-cell *matCellDef="let element">{{ element.fechaEntrada }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="fechaFinalizacion">
+          <th mat-header-cell *matHeaderCellDef>Check-out</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.fechaFinalizacion }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cantidadNoches">
+          <th mat-header-cell *matHeaderCellDef>Noches</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.cantidadNoches }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="montoFinal">
+          <th mat-header-cell *matHeaderCellDef>Total</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.montoFinal }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="estado">
+          <th mat-header-cell *matHeaderCellDef>Estado</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.estado }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="botonera">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center">
+            @if(rol !== 4){
+            <button mat-icon-button (click)="onNuevoClick()">
+              <mat-icon>add</mat-icon>
+            </button>
+            }
+          </th>
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <div style="display: flex; justify-content: space-around">
+              @if(rol !== 4){
+
+              <button mat-icon-button (click)="onEditarClick(element.id)">
+                <mat-icon>edit</mat-icon>
+              </button>
+
+              } @if(rol !== 4){
+              <button mat-icon-button (click)="onEliminarClick(element.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+              }
+          
+
+              <button mat-icon-button (click)="onCancelar(element.id, element.estado)">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+        aria-label="Select page of periodic elements"
+      >
+      </mat-paginator>
+    </div>
+    <mat-divider></mat-divider>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button (click)="onImprimir()">
+      <mat-icon>print</mat-icon>imprimir
+    </button>
+    <button mat-raised-button [routerLink]="'/home'">
+      <mat-icon>close</mat-icon>cerrar
+    </button>
+  </mat-card-actions>
+
+  <mat-card-footer> </mat-card-footer>
+</mat-card>

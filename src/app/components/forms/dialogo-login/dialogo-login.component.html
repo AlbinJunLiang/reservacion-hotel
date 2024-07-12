@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>
+  <mat-icon>
+    person
+  </mat-icon>
+  Login
+</h2>
+<mat-dialog-content>
+  <form id="miFormulario" [formGroup]="frmLogin" (ngSubmit)="logear()">
+    <mat-form-field>
+      <mat-label>Id Usuario</mat-label>
+      <input matInput formControlName="usuario" (focus)="errorLogin=false" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <input matInput formControlName="passw" type="password" (focus)="errorLogin=false"/>
+    </mat-form-field>
+    @if(errorLogin){
+    <small class="alert alert-danger">Usuario o contraseña no valido</small>
+    }
+
+    <input type="hidden" formControlName="id" />
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions style="align-self: flex-end">
+  <button
+    mat-raised-button
+    cdkFocusInitial
+    type="submit"
+    form="miFormulario"
+    [disabled]="!frmLogin.valid"
+  > Enviar</button>
+
+  <button mat-button [mat-dialog-close]="false">Cancelar</button>
+</mat-dialog-actions>

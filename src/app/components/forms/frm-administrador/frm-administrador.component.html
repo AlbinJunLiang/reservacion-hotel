@@ -1,0 +1,146 @@
+<h2 mat-dialog-title>{{ titulo }}</h2>
+<mat-dialog-content>
+  <form id="miFormulario" [formGroup]="myForm" (ngSubmit)="onGuardar()">
+    <mat-form-field style="width: 50%">
+      <mat-label>Id Admin</mat-label>
+      <input matInput formControlName="idUsuario" />
+    </mat-form-field>
+    <div style="display: flex; justify-content: space-between">
+      <mat-form-field style="width: 32%">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" />
+      </mat-form-field>
+
+      <mat-form-field style="width: 32%">
+        <mat-label>Apellido 1</mat-label>
+        <input matInput formControlName="apellido1" />
+      </mat-form-field>
+
+      <mat-form-field style="width: 32%">
+        <mat-label>Apellido 2</mat-label>
+        <input matInput formControlName="apellido2" />
+      </mat-form-field>
+    </div>
+
+
+    <div>
+
+      @if(F['nombre'].invalid && F['nombre'].touched){
+      <div>
+        @if(F['nombre'].errors!['required']){
+        <small class="alert alert-danger">El nombre es obligatorio</small>
+        } @if(F['nombre'].errors!['minlength']){
+        <small class="alert alert-danger"
+          >El nombre debe tener al menos 3 o mas caracteres</small
+        >
+        } @if(F['nombre'].errors!['maxlength']){
+        <small class="alert alert-danger"
+          >El nombre debe tener como maximo 30 caracteres</small
+        >
+        } @if(F['nombre'].errors!['pattern']){
+        <small class="alert alert-danger">Formato de nombre no valido</small>
+        }
+      </div>
+      } @if(F['apellido1'].invalid && F['apellido1'].touched){
+      @if(F['apellido1'].errors!['pattern']){
+      <small class="alert alert-danger">Formato de apellido no valido</small>
+      } @if(F['apellido1'].errors!['maxlength']){
+      <small class="alert alert-danger"
+        >El apellido debe tener como maximo 15 caracteres</small
+      >
+      } @if(F['apellido1'].errors!['minlength']){
+      <small class="alert alert-danger"
+        >El apellido debe tener como minimo 3 caracteres</small
+      >
+      } @if(F['apellido1'].errors!['required']){
+      <small class="alert alert-danger">El apellido es obligatorio</small>
+      } } @if(F['apellido2'].invalid && F['apellido2'].touched){
+      @if(F['apellido2'].errors!['pattern']){
+      <small class="alert alert-danger">Formato de apellido no valido</small>
+      } @if(F['apellido2'].errors!['maxlength']){
+      <small class="alert alert-danger"
+        >El apellido debe tener como maximo 15 caracteres</small
+      >
+      } @if(F['apellido2'].errors!['minlength']){
+      <small class="alert alert-danger"
+        >El apellido debe tener como minimo 3 caracteres</small
+      >
+      } @if(F['apellido2'].errors!['required']){
+      <small class="alert alert-danger">El apellido es obligatorio</small>
+      } } @if(F['telefono'].invalid && F['telefono'].touched){
+      @if(F['telefono'].errors!['required']){
+      <small class="alert alert-danger">El telefono es obligatorio</small>
+      } @if(F['telefono'].errors!['pattern']){
+      <small class="alert alert-danger"
+        >El telefono tiene un formato no valido</small
+      >
+      } } @if(F['celular'].invalid && F['celular'].touched){
+      @if(F['celular'].errors!['pattern']){
+      <small class="alert alert-danger"
+        >El celular tiene un formato no valido</small
+      >
+      } } @if(F['direccion'].invalid && F['direccion'].touched){
+      @if(F['direccion'].errors!['minlength']){
+      <small class="alert alert-danger"
+        >La direccion debe tener como minimo 10 caracteres</small
+      >
+      } @if(F['direccion'].errors!['maxlength']){
+      <small class="alert alert-danger"
+        >La direccion debe tener como maximo 255 caracteres</small
+      >
+      } } @if(F['correo'].invalid && F['direccion'].touched){
+      @if(F['correo'].errors!['required']){
+      <small class="alert alert-danger">El correo es obligatorio</small>
+      }
+  
+      <div *ngIf="F['correo'].errors">
+        <small class="alert alert-danger"
+          >El correo tiene un formato no válido</small
+        >
+      </div>
+      } @if(F['idUsuario'].invalid && F['idUsuario'].touched){
+      @if(F['idUsuario'].errors!['required']){
+      <small class="alert alert-danger">El id es obligatorio</small>
+      } @if(F['idUsuario'].errors!['maxlength']){
+      <small class="alert alert-danger"
+        >El usuario debe tener como maximo 15 caracteres</small
+      >
+      } @if(F['idUsuario'].errors!['minlength']){
+      <small class="alert alert-danger"
+        >El usuario debe tener como minimo 8 caracteres</small
+      >
+      } }
+  
+    </div>
+
+    <div style="display: flex; justify-content: space-between">
+      <mat-form-field style="width: 24%">
+        <mat-label>Telefono</mat-label>
+        <input matInput formControlName="telefono" />
+      </mat-form-field>
+
+      <mat-form-field style="width: 24%">
+        <mat-label>celular</mat-label>
+        <input matInput formControlName="celular" />
+      </mat-form-field>
+
+      <mat-form-field style="width: 48%">
+        <mat-label>Correo</mat-label>
+        <input matInput formControlName="correo" />
+      </mat-form-field>
+    </div>
+    <mat-form-field style="width: 100%">
+      <mat-label>Direccion</mat-label>
+      <input matInput formControlName="direccion" />
+    </mat-form-field>
+    <input type="hidden" formControlName="id" />
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions style="align-self: flex-end">
+  <button
+    mat-button type="submit" form="miFormulario" [disabled]="!myForm.valid">
+    Guardar
+  </button>
+
+  <button mat-button [mat-dialog-close]="false">Cerrar</button>
+</mat-dialog-actions>

@@ -1,0 +1,18 @@
+.sidenav-header{
+    padding: 24px;
+    text-align: center;
+}
+.menu-item{
+    border-left: 5px solid;
+    border-left-color: rgba(0,0,0,0);
+}
+
+.selected-menu-item{
+    border-left-color: rgb(0, 0, 255);
+    background: rgba(0,0,0,0.5);
+}
+
+.hide-header-text{
+    opacity:0;
+    height: 0;
+}

@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>
+    <mat-icon>{{data.icono}}</mat-icon>
+</h2>
+<mat-dialog-content>
+    <p>{{data.texto}}</p>
+</mat-dialog-content>
+
+
+<mat-dialog-actions>
+    @if(data.textoAceptar){
+    <button mat-raised-button [mat-dialog-close]="true" style="margin-right: 10px;">{{data.textoAceptar}}</button>
+    }
+    @if(data.textoCancelar){
+
+    <button mat-raised-button mat-dialog-close cdkFocusInitial="true">{{data.textoCancelar}}</button>
+    }
+</mat-dialog-actions>

@@ -1,0 +1,117 @@
+<h2 mat-dialog-title>{{ titulo }}</h2>
+<mat-dialog-content>
+  <form id="miFormulario" [formGroup]="myForm" (ngSubmit)="onGuardar()">
+
+    <div style="display: flex; justify-content: space-between">
+      <mat-form-field style="width: 45%">
+        <mat-label>Tipo</mat-label>
+        <input matInput formControlName="tipo" />
+      </mat-form-field>
+
+
+
+    
+    <mat-form-field style="width: 45%">
+      <mat-label>Cantidad Huesped</mat-label>
+      <input matInput formControlName="cantidadHuesped" />
+    </mat-form-field>
+  </div>
+
+
+    <div style="display: flex; justify-content: space-between">
+
+
+      <mat-form-field style="width: 100%">
+        <mat-label>Descripcion</mat-label>
+        <input matInput formControlName="descripcion" />
+      </mat-form-field>
+
+    </div>
+
+<div>
+
+    @if(F['descripcion'].invalid && F['descripcion'].touched){
+    
+      @if(F['descripcion'].errors!['maxlength']){
+        <small class="alert alert-danger">La descripcion solo puede tener 350 caracteres</small>
+      }
+    }
+
+
+    @if(F['tipo'].invalid && F['tipo'].touched){
+    
+      @if(F['tipo'].errors!['maxlength']){
+        <small class="alert alert-danger">El tipo solo puede tener un maximo de 350 caracteres</small>
+      }
+    }
+
+
+    @if(F['imagen'].invalid && F['imagen'].touched){
+    
+      @if(F['imagen'].errors!['maxlength']){
+        <small class="alert alert-danger">La imagen solo puede tener menos de 1500 caracteres</small>
+      }
+    }
+
+   @if(F['cantidadHuesped'].invalid && F['cantidadHuesped'].touched){
+      @if(F['cantidadHuesped'].errors!['required']){
+        <small class="alert alert-danger">Ingrse el numero de huesped</small>
+      }
+      @if(F['cantidadHuesped'].errors!['pattern']){
+        <small class="alert alert-danger">Solo puede ingresar numero enteros</small>
+      }
+    }
+
+
+    @if(F['tarifa'].invalid && F['tarifa'].touched){
+      @if(F['tarifa'].errors!['required']){
+        <small class="alert alert-danger">Debe ingresar la tarifa</small>
+      }
+      @if(F['tarifa'].errors!['pattern']){
+        <small class="alert alert-danger">Solo puede ingresar datos numericos</small>
+      }
+    }
+
+    @if(F['disponibilidad'].invalid && F['disponibilidad'].touched){
+      @if(F['disponibilidad'].errors!['required']){
+        <small class="alert alert-danger">Debe ingresar si se encuentra disponible u ocupado</small>
+      }
+      @if(F['disponibilidad'].errors!['pattern']){
+        <small class="alert alert-danger">Opcion no valida</small>
+      }
+    }
+  
+  </div>
+
+    <div style="display: flex; justify-content: space-between">
+      <mat-form-field style="width: 24%">
+        <mat-label>Tarifa</mat-label>
+        <input matInput formControlName="tarifa" />
+      </mat-form-field>
+
+      <mat-form-field style="width: 65%">
+        <mat-label>Disponibilidad</mat-label>
+        <mat-select formControlName="disponibilidad">
+          <mat-option value="1">Disponible</mat-option>
+          <mat-option value="0">Ocupado</mat-option>
+          </mat-select>
+      </mat-form-field>
+
+    </div>
+    
+    <mat-form-field style="width: 100%">
+      <mat-label>imagen</mat-label>
+      <input matInput formControlName="imagen" />
+    </mat-form-field>
+
+    <input type="hidden" formControlName="id" />
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions style="align-self: flex-end">
+  <button
+    mat-button type="submit" form="miFormulario" [disabled]="!myForm.valid">
+    Guardar
+  </button>
+
+  <button mat-button [mat-dialog-close]="false">Cerrar</button>
+</mat-dialog-actions>

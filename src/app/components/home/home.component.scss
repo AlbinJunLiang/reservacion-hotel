@@ -1,0 +1,38 @@
+.carousel-slide {
+  width: 100%;
+  height: 700px; /* Altura ajustada según tus necesidades */
+  overflow: hidden; /* Oculta partes de la imagen que desborden */
+  position: relative; /* Asegura que la imagen y la transición ocupen el mismo espacio */
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta el tamaño de la imagen manteniendo la proporción */
+  position: absolute; /* Posiciona la imagen absolutamente dentro del contenedor */
+  transition: opacity 0.5s ease; /* Transición suave de opacidad */
+}
+
+.carousel-slide img.fade {
+  opacity: 0; /* Inicia con opacidad 0 para el efecto de fundido */
+}
+
+.carousel-nav {
+  position: absolute;
+  bottom: 10px; /* Ajusta la posición verticalmente */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.carousel-nav button {
+  padding: 10px 20px;
+  background-color: rgb(33, 33, 33); /* Color de fondo del botón al pasar el mouse */
+  color: white; /* Color del texto del botón */
+  border: none;
+  cursor: pointer;
+}
+
+.carousel-nav button:hover {
+  background-color: rgb(20, 18, 18); /* Color de fondo del botón al pasar el mouse */
+}

@@ -1,0 +1,27 @@
+<mat-dialog-content>
+
+<p>{{ data.descripcion }}</p>
+</mat-dialog-content>
+
+<mat-dialog-content>
+  <img
+    [src]="data.imagen"
+    alt="Descripción de la imagen"
+    style="width: 100%; height: auto; display: block; margin: 0 auto"
+    class="dialog-image"
+
+  />
+  <p>{{ data.texto }}</p>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  @if(data.textoAceptar){
+  <button
+    mat-raised-button
+    [mat-dialog-close]="true"
+    style="margin-right: 10px"
+  >
+    {{ data.textoAceptar }}
+  </button>
+  }
+</mat-dialog-actions>

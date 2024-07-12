@@ -1,0 +1,208 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Gestion Habitaciones</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-expansion-panel
+      (opened)="panelOpenState.set(true)"
+      (closed)="panelOpenState.set(false); limpiar()"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title
+          >Filtrar - Click para
+          {{ panelOpenState() ? "Cerrar" : "Abrir" }}</mat-panel-title
+        >
+      </mat-expansion-panel-header>
+
+      <mat-form-field>
+        <mat-label>Id</mat-label>
+        <input
+          matInput
+          #fid
+          id="fid"
+          (keyup)="
+            onFiltroChange({
+              id: fid.value,
+              tipo: ftipo.value,
+              descripcion: fdescripcion.value,
+              cantidadHuesped: fhuesped.value,
+              tarifa: ftarifa.value
+            })
+          "
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input
+          matInput
+          #ftipo
+          id="ftipo"
+          (keyup)="
+            onFiltroChange({
+              id: fid.value,
+              tipo: ftipo.value,
+              descripcion: fdescripcion.value,
+              cantidadHuesped: fhuesped.value,
+              tarifa: ftarifa.value
+            })
+          "
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Descripcion</mat-label>
+        <input
+          matInput
+          #fdescripcion
+          id="fdescripcion"
+          (keyup)="
+            onFiltroChange({
+              id: fid.value,
+              tipo: ftipo.value,
+              descripcion: fdescripcion.value,
+              cantidadHuesped: fhuesped.value,
+              tarifa: ftarifa.value
+            })
+          "
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Tarifa</mat-label>
+        <input
+          matInput
+          #ftarifa
+          id="ftarifa"
+          (keyup)="
+            onFiltroChange({
+              id: fid.value,
+              tipo: ftipo.value,
+              descripcion: fdescripcion.value,
+              cantidadHuesped: fhuesped.value,
+              tarifa: ftarifa.value
+            })
+          "
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Numero huesped</mat-label>
+        <input
+          matInput
+          #fhuesped
+          id="fhuesped"
+          (keyup)="
+            onFiltroChange({
+              id: fid.value,
+              tipo: ftipo.value,
+              descripcion: fdescripcion.value,
+              cantidadHuesped: fhuesped.value,
+              tarifa: ftarifa.value
+            })
+          "
+        />
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+        <!-- Position Column -->
+        <ng-container matColumnDef="Id">
+          <th mat-header-cell *matHeaderCellDef>Id</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="tipo">
+          <th mat-header-cell *matHeaderCellDef>Tipo</th>
+          <td mat-cell *matCellDef="let element">{{ element.tipo }}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+          <td mat-cell *matCellDef="let element">{{ element.descripcion }}</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="cantidadHuesped">
+          <th mat-header-cell *matHeaderCellDef>Numero de huesped</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.cantidadHuesped }}
+          </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="tarifa">
+          <th mat-header-cell *matHeaderCellDef>Tarifa</th>
+          <td mat-cell *matCellDef="let element">{{ element.tarifa }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="disponibilidad">
+          <th mat-header-cell *matHeaderCellDef>Disponibilidad</th>
+          <td mat-cell *matCellDef="let element">
+            <ng-container *ngIf="element.disponibilidad"> Sí </ng-container>
+            <ng-container *ngIf="!element.disponibilidad"> No </ng-container>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="botonera">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center">
+            @if(rol !== 4){
+
+            <button mat-icon-button (click)="onNuevoClick()">
+              <mat-icon>add</mat-icon>
+            </button>
+            }
+          </th>
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <div style="display: flex; justify-content: space-around">
+              @if(rol !== 4){
+
+              <button mat-icon-button (click)="onEditarClick(element.id)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              } @if(rol !== 4){
+
+              <button mat-icon-button (click)="onEliminarClick(element.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+              }
+              <button mat-icon-button (click)="reservar(element.id)">
+                <mat-icon>file_open</mat-icon>
+              </button>
+
+              <button
+                mat-icon-button
+                (click)="onInfoClick(element.imagen, element.descripcion)"
+              >
+                <mat-icon>info</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+        aria-label="Select page of periodic elements"
+      >
+      </mat-paginator>
+    </div>
+    <mat-divider></mat-divider>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button (click)="onImprimir()">
+      <mat-icon>print</mat-icon>imprimir
+    </button>
+    <button mat-raised-button [routerLink]="'/home'">
+      <mat-icon>close</mat-icon>cerrar
+    </button>
+  </mat-card-actions>
+
+  <mat-card-footer> </mat-card-footer>
+</mat-card>

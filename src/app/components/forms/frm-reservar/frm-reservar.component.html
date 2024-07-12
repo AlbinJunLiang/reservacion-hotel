@@ -1,0 +1,41 @@
+<h2 mat-dialog-title >  <mat-icon>
+    hotel
+  </mat-icon>{{ titulo }}</h2>
+<mat-dialog-content>
+  <form id="miFormulario" [formGroup]="myForm" (ngSubmit)="onReservar()">
+
+    <div style="display: flex; justify-content: space-between">
+      <mat-form-field style="width: 100%">
+        <mat-label>ID Huesped</mat-label>
+        <input matInput formControlName="idCliente" />
+      </mat-form-field>
+
+  </div>
+
+
+    <div style="display: flex; justify-content: space-between">
+
+
+      <mat-form-field style="width: 100%">
+        <mat-label>Cantidad de noches</mat-label>
+        <input matInput formControlName="cantidadNoches" />
+      </mat-form-field>
+
+    </div>
+
+
+
+
+
+
+    <input type="hidden" formControlName="id" />
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions style="align-self: flex-end">
+  <button
+    mat-button type="submit" form="miFormulario" [disabled]="!myForm.valid">
+    Guardar
+  </button>
+
+  <button mat-button [mat-dialog-close]="false">Cerrar</button>
+</mat-dialog-actions>

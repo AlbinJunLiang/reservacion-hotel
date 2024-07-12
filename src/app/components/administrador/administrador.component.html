@@ -1,0 +1,142 @@
+<mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Gestion Administrador</mat-card-title>
+    </mat-card-header>
+  
+    <mat-card-content>
+    <mat-expansion-panel (opened) = "panelOpenState.set(true)"
+    (closed) = "panelOpenState.set(false); limpiar();"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>Filtrar - Click para {{panelOpenState() ? "Cerrar" : "Abrir"}}</mat-panel-title>
+      </mat-expansion-panel-header>
+  
+      <mat-form-field>
+        <mat-label>ID Cliente</mat-label>
+        <input matInput #fidUsuario id="fidUsuario"
+          (keyup)="onFiltroChange({
+            idUsuario : fidUsuario.value,
+            nombre : fnombre.value,
+            apellido1 : fapellido1.value,
+            apellido2 : fapellido2.value
+          });">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput #fnombre id="fnombre"
+          (keyup)="onFiltroChange({
+            idUsuario : fidUsuario.value,
+            nombre : fnombre.value,
+            apellido1 : fapellido1.value,
+            apellido2 : fapellido2.value
+          });">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Apellido1</mat-label>
+        <input matInput #fapellido1 id="fapellido1"
+            (keyup)="onFiltroChange({
+            idUsuario : fidUsuario.value,
+            nombre : fnombre.value,
+            apellido1 : fapellido1.value,
+            apellido2 : fapellido2.value
+          });">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Apellido2</mat-label>
+        <input matInput #fapellido2 id="fapellido2"
+            (keyup)="onFiltroChange({
+            idUsuario : fidUsuario.value,
+            nombre : fnombre.value,
+            apellido1 : fapellido1.value,
+            apellido2 : fapellido2.value
+          });">
+    </mat-form-field>
+    </mat-expansion-panel>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+          <!-- Position Column -->
+          <ng-container matColumnDef="Id">
+            <th mat-header-cell *matHeaderCellDef>Id</th>
+            <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+          </ng-container>
+  
+          <!-- Name Column -->
+          <ng-container matColumnDef="idUsuario">
+            <th mat-header-cell *matHeaderCellDef>Id Usuario</th>
+            <td mat-cell *matCellDef="let element">{{ element.idUsuario }}</td>
+          </ng-container>
+  
+          <!-- Weight Column -->
+          <ng-container matColumnDef="Nombre">
+            <th mat-header-cell *matHeaderCellDef>Nombre</th>
+            <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+          </ng-container>
+  
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="Apellido1">
+            <th mat-header-cell *matHeaderCellDef>Apellido1</th>
+            <td mat-cell *matCellDef="let element">{{ element.apellido1 }}</td>
+          </ng-container>
+  
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="Apellido2">
+            <th mat-header-cell *matHeaderCellDef>Apellido2</th>
+            <td mat-cell *matCellDef="let element">{{ element.apellido2 }}</td>
+          </ng-container>
+          <ng-container matColumnDef="Correo">
+            <th mat-header-cell *matHeaderCellDef>Correo</th>
+            <td mat-cell *matCellDef="let element">{{ element.correo }}</td>
+          </ng-container>
+  
+  
+          <ng-container matColumnDef="botonera">
+            <th mat-header-cell *matHeaderCellDef style='text-align: center;'>
+              <button mat-icon-button (click)="onNuevoClick();">
+                <mat-icon>add</mat-icon >
+              </button>
+            </th>
+            <th mat-header-cell *matHeaderCellDef >
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <div style="display: flex;justify-content: space-around;">
+              <button mat-icon-button (click)="onEditarClick(element.id);"> 
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="onEliminarClick(element.id);">
+                <mat-icon>delete</mat-icon>
+              </button>
+              @if(rol === 1){
+  
+              <button mat-icon-button (click)="onResetear(element.idUsuario);">
+                <mat-icon>key</mat-icon>
+              </button>
+            }
+              <button mat-icon-button (click)="onInfoClick(element.idUsuario, element.apellido1, element.apellido2,
+              element.telefono, element.celular, element.direccion, element.correo, element.fechaIngreso);">
+                <mat-icon>info</mat-icon>
+              </button>
+            </div>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+  
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+          aria-label="Select page of periodic elements"
+        >
+        </mat-paginator>
+      </div>
+      <mat-divider></mat-divider>
+    </mat-card-content>
+  
+    <mat-card-actions>
+      <button mat-raised-button (click)="onImprimir();"><mat-icon>print</mat-icon>imprimir</button>
+      <button mat-raised-button [routerLink]="'/home'"><mat-icon>close</mat-icon>cerrar</button>
+    </mat-card-actions>
+  
+    <mat-card-footer> </mat-card-footer>
+  </mat-card>
+  

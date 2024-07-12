@@ -1,0 +1,40 @@
+<div *ngIf="usuario$ | async as usr">
+  <mat-toolbar class="mat-elevation-z3">
+    <button
+      mati-icon-button
+      (click)="collapsed.set(!collapsed())"
+      [disabled]="usr.rol === -1"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <button mati-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+      <mat-icon>person</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      @if(usr.rol===-1){
+      <button mat-menu-item [routerLink]="['/login']">Iniciar Sesión</button>
+
+      }@else{
+
+      <button mat-menu-item (click)="logOut()">Cerrar Sesión</button>
+      <button mat-menu-item (click)="changePasswForm()">Cambiar contraseña</button>
+
+      }
+
+    </mat-menu>
+  </mat-toolbar>
+
+  <router-outlet />
+
+  <mat-sidenav-container>
+    @if(usr.rol>0){
+    <mat-sidenav opened mode="side" [style.width]="sidenavWidth()">
+      <app-side-nav [collapsed]="collapsed()"> </app-side-nav>
+    </mat-sidenav>
+    }
+    <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()">
+      <router-outlet />
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

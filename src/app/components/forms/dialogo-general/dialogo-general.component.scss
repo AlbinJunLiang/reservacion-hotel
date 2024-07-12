@@ -1,0 +1,18 @@
+h2{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+
+}
+mat-icon{
+    border-radius: 50%;
+    background-color: whitesmoke;
+    padding: 15px;
+    color: #464545;
+    font-weight: bolder;;
+}
+
+mat-dialog-actions{
+    justify-content: center;
+    margin-bottom: 5px;
+}
