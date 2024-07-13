@@ -8,6 +8,9 @@
 
 # introducción
 
+## Tecnologías utilizadas
+La aplicación web esta desarrollda en el backend con PHP **(Slim-Framework)** para las API-REST, para la capa de datos se uso **MySQL**, en el frontend **Angular** cada unas de estás capas estan separadas por contenedores en **Docker**. Para la parte de seguridad de APIs se uso **JWT** y entre otras dependencias de PHP.
+
 ## Sistema de Reservación de Hoteles
 
 Este sistema web permite a los clientes reservar habitaciones en un hotel. Las reservaciones se cobran por noche, contando desde el día de la reservación hasta las 12 PM del día siguiente.
@@ -52,7 +55,7 @@ Este sistema web permite a los clientes reservar habitaciones en un hotel. Las r
 4. Abrir la consola o CMD y dirigir la ubicacion de presentacion, ahí debe ejecutar el comando npm install.
 5. Abrir la carpeta datos y realizar el composer install, puede que sea necesario hacerlo en la carpeta negocios.
 6. Ejecutar el comando **docker-compose up --build -d** en la ubicación de la carpeta datos.
-7. Probar la aplicación en **localhost:80**, en caso de que no funcione ir a la carpeta presentación y ejecutar **ng g s**.
+7. Probar la aplicación en **localhost:80**, en caso de que no funcione ir a la carpeta presentación y ejecutar **ng s -p**.
 
 
 
