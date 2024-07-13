@@ -14,7 +14,7 @@
 # Introducción
 
 ## Tecnologías Utilizadas
-La aplicación web está desarrollada en el backend con PHP usando **Slim Framework** para las API REST. Para la capa de datos se utilizó **MySQL** y en el frontend **Angular**. Cada una de estas capas está separada por contenedores en **Docker**. Para la seguridad de las APIs se utilizó **JWT**, entre otras dependencias de PHP.
+La aplicación web está desarrollada en el backend con PHP usando **Slim Framework** para las API REST. Para la capa de datos se utilizó **MySQL** y en el frontend **Angular V18**. Cada una de estas capas está separada por contenedores en **Docker**. Para la seguridad de las APIs se utilizó **JWT**, entre otras dependencias de PHP.
 
 ## Sistema de Reservación de Hoteles
 Este sistema web permite a los clientes reservar habitaciones en un hotel. Las reservaciones se cobran por noche, contando desde el día de la reservación hasta las 12 PM del día siguiente.
