@@ -4,7 +4,7 @@
 2. [Características](#características)
 3. [Interfaz de usuario](#Aplicación)
 5. [Contribuir](#contribuir)
-6. [Para el desarrollador](#Para el desarrollador)
+6. [Para el desarrollador](#Implementacion)
 
 # introducción
 
@@ -42,10 +42,18 @@ Este sistema web permite a los clientes reservar habitaciones en un hotel. Las r
 
 ### Gestion
 ![Texto alternativo](https://github.com/AlbinJunLiang/reservacion-hotel/blob/main/img/gestion.png?raw=true
-
-
-# Para el desarrollador
 )
+
+
+# Implementacion
+1. Tener Docker-Desktop, PHP, Node Js, Angular, Composer, Slim FrameWork y etc.
+2. Descargar el proyecto y descomprimirlo.
+3. Descomprimir la carpeta de presentación y que este al mismo nivel que la carpeta datos y negocios.
+4. Abrir la consola o CMD y dirigir la ubicacion de presentacion, ahí debe ejecutar el comando npm install.
+5. Abrir la carpeta datos y realizar el composer install, puede que sea necesario hacerlo en la carpeta negocios.
+6. Ejecutar el comando **docker-compose up --build -d** en la ubicación de la carpeta datos.
+7. Probar la aplicación en **localhost:80**, en caso de que no funcione ir a la carpeta presentación y ejecutar **ng g s**.
+
 
 
 
