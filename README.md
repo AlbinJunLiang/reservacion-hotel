@@ -6,7 +6,7 @@
 4. [Uso](#uso)
 5. [Contribuir](#contribuir)
 
-#introducción
+# introducción
 
 ## Sistema de Reservación de Hoteles
 
