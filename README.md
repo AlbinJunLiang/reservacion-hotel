@@ -4,6 +4,7 @@
 2. [Características](#características)
 3. [Interfaz de usuario](#Aplicación)
 5. [Contribuir](#contribuir)
+6. [Para el desarrollador](#Para el desarrollador)
 
 # introducción
 
@@ -41,6 +42,9 @@ Este sistema web permite a los clientes reservar habitaciones en un hotel. Las r
 
 ### Gestion
 ![Texto alternativo](https://github.com/AlbinJunLiang/reservacion-hotel/blob/main/img/gestion.png?raw=true
+
+
+# Para el desarrollador
 )
 
 
