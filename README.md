@@ -2,7 +2,7 @@
 
 1. [Introducción](#introducción)
 2. [Características](#características)
-3. [Interfaz de usuario](#GUI)
+3. [Interfaz de usuario](#Aplicación)
 5. [Contribuir](#contribuir)
 
 # introducción
@@ -28,3 +28,6 @@ Este sistema web permite a los clientes reservar habitaciones en un hotel. Las r
 - Puede realizar reservaciones de habitaciones.
 - Puede cancelar sus propias reservaciones.
 - Solo puede ver las reservaciones que ha hecho él mismo.
+
+
+# Aplicación
