@@ -2,8 +2,7 @@
 
 1. [Introducción](#introducción)
 2. [Características](#características)
-3. [Instalación](#instalación)
-4. [Uso](#uso)
+3. [Interfaz de usuario](#GUI)
 5. [Contribuir](#contribuir)
 
 # introducción
@@ -11,6 +10,8 @@
 ## Sistema de Reservación de Hoteles
 
 Este sistema web permite a los clientes reservar habitaciones en un hotel. Las reservaciones se cobran por noche, contando desde el día de la reservación hasta las 12 PM del día siguiente.
+
+# características
 
 ## Roles y Permisos:
 
