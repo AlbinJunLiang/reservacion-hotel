@@ -5,7 +5,7 @@
 3. [Interfaz de usuario](#Aplicación)
 5. [Contribuir](#contribuir)
 6. [Para el desarrollador](#Implementacion)
-
+7. [Documentación API](#API)
 # introducción
 
 ## Tecnologías utilizadas
@@ -57,6 +57,10 @@ Este sistema web permite a los clientes reservar habitaciones en un hotel. Las r
 6. Ejecutar el comando **docker-compose up --build -d** en la ubicación de la carpeta datos.
 7. Probar la aplicación en **localhost:80**, en caso de que no funcione ir a la carpeta presentación y ejecutar **ng s -p**.
 8. El administrador o superusuario del sistema es **55** con contraseña **55**.
+
+# API
+[Documentación de la API](https://www.ejemplo.com)
+
 
 
 
