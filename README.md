@@ -59,7 +59,7 @@ Este sistema web permite a los clientes reservar habitaciones en un hotel. Las r
 8. El administrador o superusuario del sistema es **55** con contraseña **55**.
 
 # API
-[Documentación de la API](https://www.ejemplo.com)
+[Documentación de la API](https://github.com/AlbinJunLiang/reservacion-hotel/documentacion.pdf)
 
 
 
