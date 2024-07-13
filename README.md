@@ -31,3 +31,19 @@ Este sistema web permite a los clientes reservar habitaciones en un hotel. Las r
 
 
 # Aplicación
+### Login
+![Texto alternativo](https://github.com/AlbinJunLiang/reservacion-hotel/blob/main/img/login.png?raw=true
+)
+
+### Home
+![Texto alternativo](https://github.com/AlbinJunLiang/reservacion-hotel/blob/main/img/home.png?raw=true
+)
+
+### Gestion
+![Texto alternativo](https://github.com/AlbinJunLiang/reservacion-hotel/blob/main/img/gestion.png?raw=true
+)
+
+
+
+
+
